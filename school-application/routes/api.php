@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,19 @@ Route::group(
 
                 //delete building
                 Route::delete('/{id}', 'BuildingController@delete')->middleware('auth:sanctum');
+
+            }
+        );
+
+        //Teacher routes group
+        Route::group(
+            [
+                'prefix' => 'teachers',
+            ],
+            function (){
+
+                //create new teacher
+                Route::post('/', 'TeacherController@createNewTeacher')->middleware('auth:sanctum');
 
             }
         );
