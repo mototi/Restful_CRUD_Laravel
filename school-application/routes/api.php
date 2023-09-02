@@ -72,6 +72,12 @@ Route::group(
                 //create new teacher
                 Route::post('/', 'TeacherController@createNewTeacher')->middleware('auth:sanctum');
 
+                //update teacher
+                Route::put('/', 'TeacherController@changesInTeacher')->middleware('auth:sanctum');
+
+                //delete teacher
+                Route::delete('/{id}', 'TeacherController@deleteTeacher')->middleware('auth:sanctum');
+
             }
         );
 
