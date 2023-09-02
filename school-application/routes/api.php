@@ -78,6 +78,12 @@ Route::group(
                 //delete teacher
                 Route::delete('/{id}', 'TeacherController@deleteTeacher')->middleware('auth:sanctum');
 
+                //get all teachers
+                Route::get('/', 'TeacherController@getAll');
+
+                //get teacher by id
+                Route::get('/{id}', 'TeacherController@getById');
+
             }
         );
 
