@@ -18,5 +18,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        //local seeding
+        //if(app()->is_local()){
+            $this->call([
+                BuildingSeeder::class,
+            ]);
+       // }
+
+        //production seeding
     }
 }
