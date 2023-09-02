@@ -20,7 +20,12 @@ class BuildingSeeder extends Seeder
         $data = json_decode($dataSource, true);
 
         foreach ($data as $item) {
-            Building::create($item);
+            //check if app not in production environment
+            // if (app()->environment() != 'production') {
+            //     Building::where('name', $item['name'])->delete();
+            // }
+            // Building::create($item);
+            Building::updateOrInsert(['name' => $item['name']]);
         }
     }
 }
