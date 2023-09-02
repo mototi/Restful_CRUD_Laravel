@@ -6,9 +6,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Building;
 
 class BuildingSeeder extends Seeder
 {
+    //use WithoutModelEvents;
     /**
      * Run the database seeds.
      */
@@ -18,7 +20,7 @@ class BuildingSeeder extends Seeder
         $data = json_decode($dataSource, true);
 
         foreach ($data as $item) {
-            Log::debug($item);
+            Building::create($item);
         }
     }
 }

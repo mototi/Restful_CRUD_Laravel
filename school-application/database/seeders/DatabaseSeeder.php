@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        //local seeding
-        //if(app()->is_local()){
+        //development seeding
+        if(app()-> environment() == 'local'){
             $this->call([
                 BuildingSeeder::class,
             ]);
-       // }
+        }
 
         //production seeding
     }
