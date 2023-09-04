@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Student;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class StudentSeeder extends Seeder
 {
@@ -13,7 +14,9 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        Student::where("id", ">", 0)->forceDelete();
+        Schema::disableForeignKeyConstraints();
+        Student::truncate();
         Student::factory()->count(200)->create();
+        Schema::enableForeignKeyConstraints();
     }
 }

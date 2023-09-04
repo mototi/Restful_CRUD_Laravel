@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +17,12 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->admin()->create([
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+
+        User::factory()->admin()->create([
             'name' => 'admin User',
-            'email' => 'admin007@example.com',
+            'email' => 'admin1@example.com',
             'password' => Hash::make('secret'),
         ]);
 
@@ -29,6 +34,8 @@ class DatabaseSeeder extends Seeder
                 TeacherSeeder::class,
             ]);
         }
+
+        Schema::enableForeignKeyConstraints();
 
         //production seeding
     }
